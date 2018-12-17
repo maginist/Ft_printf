@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:02:58 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/14 14:49:17 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:45:50 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ void ft_putnbr_base(int n, char *base)
 	nb = n;
 	if (!(base_isvalide(base, base_size)))
 		return ;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
 	if (nb < base_size)
 		ft_putchar(base[nb]);
 	else

@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:13:55 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:17:36 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:44:22 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		base_isvalide(char *base, long long size)
 {
-	long long							i;
-	long long							j;
+	long long				i;
+	long long				j;
 
 	i = 0;
 	if (size < 2)
