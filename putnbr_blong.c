@@ -6,14 +6,14 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:03:49 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:11:35 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:21:51 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-int	base_isvalide(char *base, int size)
+int	base_isvalide(char *base, long size)
 {
 	unsigned long				i;
 	unsigned long				j;
@@ -39,7 +39,7 @@ int	base_isvalide(char *base, int size)
 void putnbr_blong(unsigned long n, char *base)
 {
 	unsigned long				nb;
-	unsigned long				base_size;
+	long						base_size;
 
 	base_size = (long)ft_strlen(base);
 	nb = n;

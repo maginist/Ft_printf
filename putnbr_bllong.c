@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_bshort.c                                    :+:      :+:    :+:   */
+/*   putnbr_bllong.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 10:45:50 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:21:38 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/17 11:13:55 by maginist          #+#    #+#             */
+/*   Updated: 2018/12/17 11:17:36 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	base_isvalide(char *base, short size)
+int		base_isvalide(char *base, long long size)
 {
-	short				i;
-	short				j;
+	long long							i;
+	long long							j;
 
 	i = 0;
 	if (size < 2)
@@ -35,25 +35,20 @@ int	base_isvalide(char *base, short size)
 	return (1);
 }
 
-void putnbr_bshort(short n, char *base)
+void putnbr_bllong(unsigned long long n, char *base)
 {
-	unsigned short			nb;
-	short					base_size;
+	unsigned long long		nb;
+	long long				base_size;
 
-	base_size = (short)ft_strlen(base);
+	base_size = (long long)ft_strlen(base);
 	nb = n;
 	if (!(base_isvalide(base, base_size)))
 		return ;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
 	if (nb < base_size)
 		ft_putchar(base[nb]);
 	else
 	{
-		putnbr_bshort((nb / base_size), base);
+		putnbr_bllong((nb / base_size), base);
 		ft_putchar(base[nb % base_size]);
 	}
 }
