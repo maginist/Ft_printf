@@ -6,13 +6,13 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 10:45:50 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:45:25 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:57:19 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	base_isvalide(char *base, short size)
+int		base_isvalide(char *base, unsigned short size)
 {
 	short				i;
 	short				j;
@@ -35,12 +35,12 @@ int	base_isvalide(char *base, short size)
 	return (1);
 }
 
-void putnbr_bshort(short n, char *base)
+void	putnbr_bshort(unsigned short n, char *base)
 {
-	unsigned short			nb;
-	short					base_size;
+	unsigned short		nb;
+	unsigned short		base_size;
 
-	base_size = (short)ft_strlen(base);
+	base_size = (unsigned short)ft_strlen(base);
 	nb = n;
 	if (!(base_isvalide(base, base_size)))
 		return ;

@@ -6,17 +6,16 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:03:49 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:21:51 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:56:28 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int	base_isvalide(char *base, long size)
+int		base_isvalide(char *base, unsigned long size)
 {
-	unsigned long				i;
-	unsigned long				j;
+	long				i;
+	long				j;
 
 	i = 0;
 	if (size < 2)
@@ -36,12 +35,12 @@ int	base_isvalide(char *base, long size)
 	return (1);
 }
 
-void putnbr_blong(unsigned long n, char *base)
+void	putnbr_blong(unsigned long n, char *base)
 {
-	unsigned long				nb;
-	long						base_size;
+	unsigned long		nb;
+	unsigned long		base_size;
 
-	base_size = (long)ft_strlen(base);
+	base_size = (unsigned long)ft_strlen(base);
 	nb = n;
 	if (!(base_isvalide(base, base_size)))
 		return ;
