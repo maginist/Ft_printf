@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/18 16:15:20 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/18 15:26:07 by maginist          #+#    #+#             */
+/*   Updated: 2018/12/18 17:34:26 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+#include "ft_printf.h"
 
-void	putnbr_bllong(unsigned long long n, char *base);
-void	putnbr_blong(unsigned long n, char *base);
-void	putnbr_bshort(unsigned short n, char *base);
-int		ft_printf(const char *format, ...);
-void	redirection(char *s, int i, int j, va_list ap);
+void	redirection(char *s, int i, int j, va_list ap)
+{
+	int moins;
+	int spaces;
+	int size;
 
-#endif
+	moins = 0;
+	spaces = 0;
+	while (i < j)
+	{
+		if (s[i] == '-')
+			moins = 1;
+		if (ft_isdigit(s[i]))
+			spaces = (spaces * 10) + (s[i] + '0');
+		i++;
+	}
+	size = redirection2(s, ap, i, moins);
+	}

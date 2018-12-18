@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:21:30 by floblanc          #+#    #+#             */
-/*   Updated: 2018/12/07 13:12:05 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/18 15:07:11 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_tabdel(char **tab);
 void				ft_puttab(char **tab);
 size_t				ft_tab3size(void ***tab);
+int					ft_strsearch(char *src, char c);
 
 #endif
