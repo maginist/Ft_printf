@@ -6,16 +6,16 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:03:49 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:56:28 by maginist         ###   ########.fr       */
+/*   Updated: 2018/12/27 00:27:15 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		base_isvalide(char *base, unsigned long size)
 {
-	long				i;
-	long				j;
+	unsigned long				i;
+	unsigned long				j;
 
 	i = 0;
 	if (size < 2)
@@ -24,6 +24,7 @@ int		base_isvalide(char *base, unsigned long size)
 	{
 		if (base[i] == '-' || base[i] == '+')
 			return (0);
+		j = i + 1;
 		while (base[j])
 		{
 			if (base[i] == base[j])

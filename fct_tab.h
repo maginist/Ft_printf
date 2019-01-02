@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   fct_tab.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/27 12:59:20 by floblanc          #+#    #+#             */
+/*   Updated: 2019/01/02 14:56:28 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#ifndef FCT_TAB_H
+# define FCT_TAB_H
+# include "ft_printf.h"
 
-void	putnbr_short(short n)
-{
-	unsigned short	nb;
+t_fct	fct_tab[] = {{'c', &gest_c}, \
+{'s', &gest_s}, \
+{'p', &gest_p}, \
+{'d', &gest_di}, \
+{'i', &gest_di}/*, \
+{'o', &gest_o}, \
+{'u', &gest_u}, \
+{'x', &gest_x}, \
+{'X', &gest_majx}, \
+{'f', &gest_f}, \
+{'e', &gest_e}, \
+{'g', &gest_g}, \
+{'b', &gest_b}, \
+{'r', &gest_r}, \
+{'k', &gest_k}*/};
 
-	nb = n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
-	}
-}
+#endif

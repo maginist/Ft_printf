@@ -6,11 +6,11 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:48:45 by floblanc          #+#    #+#             */
-/*   Updated: 2018/12/17 11:49:15 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/02 12:03:56 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 void	putnbr_long(long n)
 {

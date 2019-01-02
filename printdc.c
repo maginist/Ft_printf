@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   printdc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/23 18:37:50 by floblanc          #+#    #+#             */
+/*   Updated: 2018/12/29 14:54:16 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	putnbr_short(short n)
+void	printdc(int tdc)
 {
-	unsigned short	nb;
-
-	nb = n;
-	if (n < 0)
+	while (tdc > 0)
 	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
+		ft_putchar(' ');
+		tdc--;
 	}
 }

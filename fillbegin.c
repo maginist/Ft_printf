@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirection.c                                      :+:      :+:    :+:   */
+/*   fillbegin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/20 15:34:30 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/01 18:28:09 by floblanc         ###   ########.fr       */
+/*   Created: 2018/12/28 23:55:44 by floblanc          #+#    #+#             */
+/*   Updated: 2019/01/02 14:40:14 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "fct_tab.h"
 
-void	redirection(t_data *data, va_list ap)
+char	*fillbegin(char *num, t_data *data)
 {
-//	printf("diez : %d\nspace : %d\nplus : %d\nmoins : %d\nzero : %d\ntdc : %d\npreci : %d\nnb_flgs : %d\nflgs : %c\nsymbol : %c\n", data->diez, data->space, data->plus, data->moins, data->zero, data->tdc, data->preci, data->nb_flgs, data->flgs, data->symbol);
 	int	i;
 
-	i = 0;
-	(void)ap;
-	while (i < 15)
+	i = 1;
+	if (num[0] != '-')
 	{
-		if (fct_tab[i].symbol == data->symbol)
+		if (data->plus == 1)
 		{
-			fct_tab[i].f(data, ap);
-			return ;
+			num[0] = '+';
+			data->tdc -= 1;
 		}
-		i++;
+		else if (data->space == 1)
+		{
+			num[0] = ' ';
+			data->tdc -= 1;
+		}
+		else
+			i--;
 	}
+	while (num[i] == 0)
+	{
+		num[i++] = '0';
+		if (data->preci <= 0)
+			data->tdc -= 1;
+	}
+	return (num);
 }

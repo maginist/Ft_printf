@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   ulltoa.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
+/*   Updated: 2019/01/02 14:48:51 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	putnbr_short(short n)
+static unsigned long long int	ft_size(unsigned long long int n)
 {
-	unsigned short	nb;
+	unsigned long long int	i;
 
-	nb = n;
-	if (n < 0)
+	i = 0;
+	if (n == 0)
+		i = 1;
+	while (n != 0)
 	{
-		ft_putchar('-');
-		nb = -n;
+		n /= 10;
+		i++;
 	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
+	return (i);
+}
+
+char							*ulltoa(unsigned long long int n)
+{
+	unsigned long long		i;
+	char					*str;
+
+	i = ft_size(n);
+	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+		return (0);
+	str[i] = '\0';
+	i--;
+	while (i > 0)
 	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
+		str[i] = (n % 10) + '0';
+		n /= 10;
+		i--;
 	}
+	return (str);
 }

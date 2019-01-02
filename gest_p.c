@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   gest_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/23 22:16:44 by floblanc          #+#    #+#             */
+/*   Updated: 2018/12/29 15:03:25 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	putnbr_short(short n)
+void	gest_p(t_data *data, va_list ap)
 {
-	unsigned short	nb;
+	unsigned long int	ptr;
 
-	nb = n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
-	}
+	ptr = va_arg(ap, unsigned long int);
+	data->size_aff = 14;
+	data->tdc = data->tdc - 14;
+	if (data->moins == 0)
+		printdc(data->tdc);
+	ft_putstr("0x");
+	putnbr_blong(ptr, "0123456789abcdef");
+	if (data->moins == 1)
+		printdc(data->tdc);
 }

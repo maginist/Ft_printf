@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   gest_allnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/29 14:57:46 by floblanc          #+#    #+#             */
+/*   Updated: 2019/01/02 14:32:05 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	putnbr_short(short n)
+void	gest_allnum(char *num, t_data *data)
 {
-	unsigned short	nb;
-
-	nb = n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
-	}
+	if (data->moins == 0)
+		printdc(data->tdc);
+	ft_putstr(num);
+	free(num);
+	if (data->moins == 1)
+		printdc(data->tdc);
 }

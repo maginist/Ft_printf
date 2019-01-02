@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/20 16:47:17 by floblanc          #+#    #+#             */
+/*   Updated: 2018/12/22 16:17:08 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	putnbr_short(short n)
+void	init_struct(t_data *data, char *s, int pos_sym)
 {
-	unsigned short	nb;
-
-	nb = n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
-	}
+	data->diez = 0;
+	data->space = 0;
+	data->plus = 0;
+	data->moins = 0;
+	data->zero = 0;
+	data->tdc = 0;
+	data->preci = 0;
+	data->nb_flgs = 0;
+	data->flgs = 0;
+	data->size_aff = 0;
+	data->symbol = s[pos_sym];
+	data->s = s;
 }

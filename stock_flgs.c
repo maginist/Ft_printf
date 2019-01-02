@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_short.c                                     :+:      :+:    :+:   */
+/*   stock_flgs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/17 11:46:18 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 12:04:03 by maginist         ###   ########.fr       */
+/*   Created: 2018/12/21 17:46:48 by floblanc          #+#    #+#             */
+/*   Updated: 2018/12/21 18:52:22 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	putnbr_short(short n)
+void	stock_flgs(t_data *data, char *s, int *i, int j)
 {
-	unsigned short	nb;
-
-	nb = n;
-	if (n < 0)
+	while (ft_strsearch("hlL", s[*i]) && *i < j)
 	{
-		ft_putchar('-');
-		nb = -n;
-	}
-	if (nb < 10)
-		ft_putchar(nb + '0');
-	else
-	{
-		ft_putnbr((nb / 10));
-		ft_putchar((nb % 10) + '0');
+		data->nb_flgs += 1;
+		data->flgs = s[*i];
+		*i += 1;
 	}
 }

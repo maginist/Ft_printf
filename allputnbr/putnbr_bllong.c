@@ -6,11 +6,11 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:13:55 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/17 11:56:56 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/02 12:03:18 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int		base_isvalide(char *base, unsigned long long size)
 {
