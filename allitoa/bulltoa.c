@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utoa.c                                             :+:      :+:    :+:   */
+/*   bulltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 16:36:52 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/02 17:05:07 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static unsigned int	ft_size(unsigned int n)
+static unsigned long long	ft_size(unsigned long long int n, unsigned int size)
 {
-	unsigned int	i;
+	unsigned long long		i;
 
 	i = 0;
 	if (n == 0)
 		i = 1;
 	while (n != 0)
 	{
-		n /= 10;
+		n /= (unsigned long long)size;
 		i++;
 	}
 	return (i);
 }
 
-char				*utoa(unsigned int n)
+char					*bulltoa(unsigned long long int n, char *base)
 {
-	unsigned int	i;
-	char			*str;
+	unsigned long long		i;
+	char					*str;
+	unsigned int			size;
 
-	i = ft_size(n);
+	size = ft_strlen(base);
+	i = ft_size(n, size);
 	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
 		return (0);
 	str[i] = '\0';
 	i--;
 	while (i > 0)
 	{
-		str[i] = (n % 10) + '0';
-		n /= 10;
+		str[i] = base[(n % size)];
+		n /= size;
 		i--;
 	}
-	str[i] = (n % 10) + '0';
+	str[i] = base[(n % size)];
 	return (str);
 }
