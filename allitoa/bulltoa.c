@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 17:05:07 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/02 17:19:34 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static unsigned long long	ft_size(unsigned long long int n, unsigned int size)
 	return (i);
 }
 
-char					*bulltoa(unsigned long long int n, char *base)
+char						*bulltoa(unsigned long long int n, char *base)
 {
 	unsigned long long		i;
 	char					*str;

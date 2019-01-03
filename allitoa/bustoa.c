@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 17:05:50 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/02 17:19:54 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static unsigned short		ft_size(unsigned short n, unsigned short size)
 	return (i);
 }
 
-char					*bustoa(unsigned short n, char *base)
+char						*bustoa(unsigned short n, char *base)
 {
 	unsigned short		i;
 	char				*str;

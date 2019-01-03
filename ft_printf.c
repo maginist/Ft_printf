@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:53:46 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/02 14:47:28 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/03 13:26:48 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int	is_valide(char *s, int i)
 {
+	int star;
+
+	star = 0;
 	while (ft_strsearch("#+- 0", s[i]))
 		i++;
 	while (ft_isdigit(s[i]) || s[i] == '*') // partiellement faux aussi
-		i++;
+	{
+		if (s[i] == '*')
+			star = 1;
+		if (star == 1)
+			i++;
+	}
 	if (s[i] == '.')
 		i++;
 	while (ft_isdigit(s[i]) || s[i] == '*') //partiellement faux si y'a un '*' faut le passer qu'une fois
@@ -36,7 +44,7 @@ int	is_valide(char *s, int i)
 		if (s[i] == 'h')
 			i++;
 	}
-	if (ft_strsearch("cspdiouxX", s[i]) && s[i - 1] != 'L')
+	if (ft_strsearch("cspdiouxXb", s[i]) && s[i - 1] != 'L')
 		return (i);
 	else if (s[i] == 'f')
 		if (s[i - 1] == 'L' || (s[i - 1] == 'l' && s[i - 2] != 'l'))
