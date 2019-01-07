@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:12:13 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/07 18:29:44 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static int	ft_size(double n)
 		i++;
 	}
 	printf("before '.' : %d\n", i);
-	if (nb != 0)
+	if (nb > 0.0000009)
 		i++;
 	printf("after point i = %i and nb = %f\n", i, nb);
-	while (nb > 0)
+	while (nb > 0.0000009)
 	{
 		printf("nb = %i\n", (int)(nb * 10)); //mdr je comprend pas x)
-		nb = (nb * 10) - (double)((int)(nb * 10));
+		nb = (nb * 10) - ((int)(nb * 10));
 		i++;
 	}
 	printf("size : %i\n", i);
@@ -56,11 +56,11 @@ char			*ftoa(double n)
 		n = -n;
 		str[0] = '-';
 	}
-	nb = n - (double)((int)n);
+	nb = n - ((int)n);
 	str[i--] = '\0';
 	while (str[i] == 0)
 	{
-		if (nb == 0)
+		if (nb <= 0.0000009)
 		{
 			str[i--] = ((int)n % 10) + '0';
 			n /= 10;
@@ -68,8 +68,8 @@ char			*ftoa(double n)
 		else
 		{
 			str[i--] = (int)(nb * 10) + '0';//incorrect ca ecrit le num a l'envers
-			nb = (nb * 10) - (double)((int)(nb * 10));
-			if (nb == 0)
+			nb = (nb * 10) - ((int)(nb * 10));
+			if (nb <= 0.0000009)
 				str[i--] = '.';
 		}
 	}
@@ -80,7 +80,7 @@ int	main()
 {
 	double	f;
 
-	f = 23.512345;
+	f = 23.512;
 	ft_putstr(ftoa(f));
 	return (0);
 }
