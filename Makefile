@@ -6,17 +6,23 @@
 #    By: maginist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 09:46:56 by maginist          #+#    #+#              #
-#    Updated: 2019/01/03 15:22:16 by maginist         ###   ########.fr        #
+#    Updated: 2019/01/07 16:50:51 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-
-SRC = add_pre_flgs.c\
+OBJ_PATH = ./obj
+SRC_PATH = ./src
+FILES = add_pre_flgs.c\
 	  analyse.c\
 	  fillbegin.c\
 	  ft_printf.c\
 	  gest_allnum.c\
+	  gest_b.c\
+	  gest_majx.c\
+	  gest_o.c\
+	  gest_u.c\
+	  gest_x.c\
 	  gest_c.c\
 	  gest_di.c\
 	  gest_p.c\
@@ -27,42 +33,46 @@ SRC = add_pre_flgs.c\
 	  redirection.c\
 	  stock_digit.c\
 	  stock_flgs.c\
-	  test_the_true.c\
-	  allitoa/lltoa.c\
-	  allitoa/ltoa.c\
-	  allitoa/stoa.c\
-	  allitoa/ulltoa.c\
-	  allitoa/ultoa.c\
-	  allitoa/ustoa.c\
-	  allitoa/utoa.c\
-	  allputnbr/putnbr_blong.c\
+	  bulltoa.c\
+	  bultoa.c\
+	  bustoa.c\
+	  butoa.c\
+	  lltoa.c\
+	  ltoa.c\
+	  stoa.c\
+	  ulltoa.c\
+	  ultoa.c\
+	  ustoa.c\
+	  utoa.c\
+	  putnbr_blong.c
 
-OBJS = $(SRC:.c=.o)
-
+OBJ_NAME = $(FILES:.c=.o)
 LIB = libft/
-
 CC = gcc
-
+INC = -I./include
 FLG = -Wall -Werror -Wextra
+SRC = $(addprefix $(SRC_PATH)/,$(FILES))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-INC = ft_printf.h fct_tab.h
+all: $(NAME)
 
-all: libs $(NAME)
-
-libs:
+$(NAME): $(OBJ_PATH) $(OBJ)
 		make -C $(LIB)
+		cp libft/libft.a ./$(NAME)
+		ar rcs $(NAME) $(OBJ)
 
-$(NAME): $(OBJS)
-		$(CC) $(FLG) $(OBJS) -L $(LIB) -o $(SRC)
-
-%.o: %.c $(INC)
-	$(CC) $(FLG) -I. -o $@ -c $<
+$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
+		$(CC) $((FLG) -c $? $(INC) -o $@
 
 clean:
-		rm -f $(OBJS)
-		make -C $(LIB) fclean
+		make -C $(LIB) clean
+		rm -rf ./obj
+
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
 
 fclean: clean
+		make fclean -C $(LIB)
 		rm -f $(NAME)
 
 re: fclean all
