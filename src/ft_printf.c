@@ -6,29 +6,19 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:53:46 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:12:06 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:09:57 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	is_valide(char *s, int i)
+int	is_valide2(char *s, int i)
 {
-	int star;
-
-	star = 0;
-	while (ft_strsearch("#+- 0", s[i]))
+	while (ft_isdigit(s[i]) || s[i] == '*')
 		i++;
-	while (ft_isdigit(s[i]) || s[i] == '*') // partiellement faux aussi
-	{
-		if (s[i] == '*')
-			star = 1;
-		if (star == 1)
-			i++;
-	}
 	if (s[i] == '.')
 		i++;
-	while (ft_isdigit(s[i]) || s[i] == '*') //partiellement faux si y'a un '*' faut le passer qu'une fois
+	while (ft_isdigit(s[i]) || s[i] == '*')
 		i++;
 	if (s[i] == 'l')
 	{
@@ -44,7 +34,15 @@ int	is_valide(char *s, int i)
 		if (s[i] == 'h')
 			i++;
 	}
-	if (ft_strsearch("cspdiouxXb", s[i]) && s[i - 1] != 'L')
+	return (i);
+}
+
+int	is_valide(char *s, int i)
+{
+	while (ft_strsearch("#+- 0", s[i]))
+		i++;
+	i = is_valide2(s, i);
+	if (ft_strsearch("cspdiouxXbf%", s[i]) && s[i - 1] != 'L')
 		return (i);
 	else if (s[i] == 'f')
 		if (s[i - 1] == 'L' || (s[i - 1] == 'l' && s[i - 2] != 'l'))
@@ -70,7 +68,7 @@ int	ft_printf(const char *format, ...)
 			if ((j = is_valide((char*)format, i + 1)))
 				i = analyse((char*)format, i, j, ap) + 1;
 			else
-				return (ret);
+				i++;
 		}
 		ft_putchar(format[i]);
 		ret++;

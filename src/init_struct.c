@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 16:47:17 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:13:29 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/09 11:44:54 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_struct(t_data *data, char *s, int pos_sym)
 	data->moins = 0;
 	data->zero = 0;
 	data->tdc = 0;
-	data->preci = 0;
+	data->pt = 0;
+	data->preci = -1;
 	data->nb_flgs = 0;
 	data->flgs = 0;
 	data->size_aff = 0;

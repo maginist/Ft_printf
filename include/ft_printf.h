@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/07 16:16:23 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:09:18 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_data
 	int			moins;
 	int			zero;
 	int			tdc;
+	int			pt;
 	int			preci;
 	int			nb_flgs;
 	int			size_aff;
@@ -63,6 +64,7 @@ void			gest_g(t_data *data, va_list ap);
 void			gest_b(t_data *data, va_list ap);
 void			gest_r(t_data *data, va_list ap);
 void			gest_k(t_data *data, va_list ap);
+void			gest_pc(t_data *data, va_list ap);
 
 typedef	struct	s_fct
 {
