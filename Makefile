@@ -6,7 +6,7 @@
 #    By: maginist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 09:46:56 by maginist          #+#    #+#              #
-#    Updated: 2019/01/07 16:50:51 by maginist         ###   ########.fr        #
+#    Updated: 2019/01/10 11:27:08 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ FILES = add_pre_flgs.c\
 	  gest_di.c\
 	  gest_p.c\
 	  gest_s.c\
+	  gest_f.c\
 	  init_struct.c\
 	  newstart_cleanbegin.c\
 	  printdc.c\
@@ -44,6 +45,8 @@ FILES = add_pre_flgs.c\
 	  ultoa.c\
 	  ustoa.c\
 	  utoa.c\
+	  ftoa.c\
+	  fltoa.c\
 	  putnbr_blong.c
 
 OBJ_NAME = $(FILES:.c=.o)
