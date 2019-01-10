@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/09 17:09:18 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:14:57 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char			*bulltoa(unsigned long long n, char *base);
 char			*bultoa(unsigned long n, char *base);
 char			*butoa(unsigned int n, char *base);
 char			*bustoa(unsigned short n, char *base);
+char			*ftoa(double n);
+char			*fltoa(long double n);
 void			putnbr_blong(unsigned long n, char *base);
 int				ft_printf(const char *format, ...);
 int				analyse(char *s, int i, int j, va_list ap);

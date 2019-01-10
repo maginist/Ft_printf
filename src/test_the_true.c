@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:13:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/09 17:11:53 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:19:02 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int		main(int ac, char **av)
 	char		c;
 	char		*str;
 
-	(void)ac;
+	if (ac < 2)
+		return (0);
 	i = atoi(av[1]);
-	f = 1233.1234567890;
+	f = 45.82;
 	c = av[1][0];
 	str = av[1];
-	ft_printf("test: %%d rf test2\n", i);
-	ft_putchar((int)f + '0');
-	printf("test: %% rf test2\n");
+	ft_printf("test: %60.50f rf test2\n", f);
+	printf("test: %60.50f rf test2\n", f);
 	return (0);
 }

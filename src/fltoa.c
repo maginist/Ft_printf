@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftoa.c                                             :+:      :+:    :+:   */
+/*   fltoa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/10 11:15:55 by maginist         ###   ########.fr       */
+/*   Created: 2019/01/10 11:12:00 by maginist          #+#    #+#             */
+/*   Updated: 2019/01/10 11:20:12 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	ft_size(double n, int *save)
+static int	ft_size(long double n, int *save)
 {
-	int		i;
-	double	nb;
+	int			i;
+	long double	nb;
 
 	i = 0;
 	if (n == 0 || n < 0)
@@ -39,9 +39,9 @@ static int	ft_size(double n, int *save)
 	return (i);
 }
 
-static char	*put_in_str(char *str, double n, int i, int pos_pt)
+static char	*put_in_str(char *str, long double n, int pos_pt, int i)
 {
-	double	nb;
+	double		nb;
 
 	if ((nb = n - (int)n))
 		i = 0;
@@ -68,12 +68,12 @@ static char	*put_in_str(char *str, double n, int i, int pos_pt)
 	return (str);
 }
 
-char		*ftoa(double n)
+char		*fltoa(long double n)
 {
-	int		i;
-	int		pos_pt;
-	char	*str;
-	int		run;
+	int			i;
+	int			pos_pt;
+	char		*str;
+	int			run;
 
 	run = -1;
 	pos_pt = 0;
@@ -86,5 +86,5 @@ char		*ftoa(double n)
 		str[0] = '-';
 	}
 	str[i] = '\0';
-	return (put_in_str(str, n, run, pos_pt));
+	return (put_in_str(str, n, pos_pt, run));
 }
