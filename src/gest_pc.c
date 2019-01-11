@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 17:04:46 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/09 17:16:55 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/11 14:34:19 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	gest_pc(t_data *data, va_list ap)
 	(void)ap;
 	(void)*data;
 	ft_putchar('%');
+	data->size_aff += 1;
 }

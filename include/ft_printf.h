@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/10 11:14:57 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/11 13:03:48 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char			*ftoa(double n);
 char			*fltoa(long double n);
 void			putnbr_blong(unsigned long n, char *base);
 int				ft_printf(const char *format, ...);
-int				analyse(char *s, int i, int j, va_list ap);
+int				analyse(char *s, int *i, int j, va_list ap);
 
 typedef struct	s_data
 {

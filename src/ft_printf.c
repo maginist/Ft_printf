@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:53:46 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/09 17:09:57 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/11 16:48:03 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,33 @@ int	is_valide(char *s, int i)
 int	ft_printf(const char *format, ...)
 {
 	va_list ap;
-	int		i;
+	int		*i;
 	int		j;
 	int		ret;
 
 	ret = 0;
+	if (!(i = (int*)malloc(sizeof(int) * 2)))
+			return (0);
 	va_start(ap, format);
-	i = 0;
-	while (format[i])
+	i[0] = 0;
+	while (format[i[0]])
 	{
 		j = 0;
-		if (format[i] == '%')
+		if (format[i[0]] == '%')
 		{
-			if ((j = is_valide((char*)format, i + 1)))
-				i = analyse((char*)format, i, j, ap) + 1;
+			if ((j = is_valide((char*)format, i[0] + 1)))
+			{
+				i[0] = analyse((char*)format, i, j, ap) + 1;
+				ret = ret + i[1];
+			}
 			else
-				i++;
+				i[0]++;
 		}
-		ft_putchar(format[i]);
+		ft_putchar(format[i[0]]);
 		ret++;
-		i++;
+		i[0]++;
 	}
 	va_end(ap);
+	free(i);
 	return (ret);
 }

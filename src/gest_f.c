@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/10 11:20:44 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/10 11:41:10 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static char	*ajust_num(char *num, t_data *data, int i)
 	char	*tmp;
 
 	tmp = num;
-	if (!(num = (char*)malloc(sizeof(char) * (data->size_aff + 1))))
-		return (0);
+	if (!(num = (char*)malloc(sizeof(char)	* (data->size_aff + 1))))
+		return(0);
 	if (tmp[0] != '-')
 	{
 		if (data->plus == 1)
@@ -32,7 +32,7 @@ static char	*ajust_num(char *num, t_data *data, int i)
 			i = 1;
 		}
 	}
-	ft_strncpy(num + i, tmp, (size_t)(data->size_aff));
+	ft_strncpy(num + i, tmp, (size_t)(data->size_aff - i));
 	i = ft_strlen(num);
 	while (i < data->size_aff)
 		num[i++] = '0';
@@ -42,7 +42,7 @@ static char	*ajust_num(char *num, t_data *data, int i)
 
 void		gest_f(t_data *data, va_list ap)
 {
-	char	*num;
+	char    *num;
 	int		i;
 
 	i = 0;
