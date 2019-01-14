@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:34:30 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:14:27 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 12:24:11 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	redirection(t_data *data, va_list ap)
 
 	i = 0;
 	(void)ap;
-	while (i < 15)
+	while (g_fct_tab[i].symbol)
 	{
 		if (g_fct_tab[i].symbol == data->symbol)
 		{

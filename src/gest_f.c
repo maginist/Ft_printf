@@ -6,19 +6,18 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/14 10:11:32 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 12:04:30 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static void		arrondi(char *num, char *tmp, int size, int check)
+static void		arrondi(char *num, char *tmp, t_data *data, int check)
 {
 	static int	retenue;
 	int		i;
-	char	*tmp2;
 
-	if ((int)ft_strlen(num) < size)
+	if ((int)ft_strlen(num) < data->size_aff)
 		return ;
 	if (!(retenue))
 		retenue = 0;
@@ -29,7 +28,7 @@ static void		arrondi(char *num, char *tmp, int size, int check)
 		i++;
 	if (i > 0 && num[i] == '.')
 		i--;
-	if ((check == size && tmp[check] >= '5' && tmp[check] <= '9') 
+	if ((check == data->size_aff && tmp[check] >= '5' && tmp[check] <= '9') 
 		|| (i >= 0 && ft_isdigit(num[i]) && retenue == 1))
 	{
 		if (num[i] < '9')
@@ -38,18 +37,16 @@ static void		arrondi(char *num, char *tmp, int size, int check)
 		{
 			num[i] = '0';
 			retenue = 1;
-			arrondi(num, tmp, size, i);
+			arrondi(num, tmp, data, i);
 		}
 	}
 	else if (retenue == 1)
 	{
-		if (!(tmp = (char*)malloc(sizeof(char) * (size + 2))))
-			return ;
-		ft_strcpy(tmp + 1, num);
-		tmp[0] = 1;
-		tmp2 = tmp;
-		tmp = num;
-		num = tmp2;
+		data->size_aff += 1;
+		data->tdc -= 1;
+		tmp = ft_strdup(num);
+		ft_strcpy(num + 1, tmp);
+		num[0] = '1';
 		free(tmp);
 	}
 }
@@ -59,6 +56,7 @@ static char		*ajust_num(char *num, t_data *data, int i)
 	char	*tmp;
 
 	tmp = num;
+	free(num);
 	if (!(num = (char*)malloc(sizeof(char) * (data->size_aff + 1))))
 		return (0);
 	if (tmp[0] != '-')
@@ -76,10 +74,9 @@ static char		*ajust_num(char *num, t_data *data, int i)
 	}
 	ft_strncpy(num + i, tmp, (size_t)(data->size_aff));
 	i = ft_strlen(num);
-	arrondi(num, tmp, data->size_aff, i);
+	arrondi(num, tmp, data, i);
 	while (i < data->size_aff)
 		num[i++] = '0';
-	free(tmp);
 	return (num);
 }
 

@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:13:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/14 10:09:00 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 12:17:35 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int		main(int ac, char **av)
 	(void)ac;
 	l = 2854645485456566555;
 	i = atoi(av[1]);
-	f = 99.9999999999;
+	f = 10.56999999999;
 	c = 'u';
 	str = "coucou";
-	x = 255;
+	x = 42;
 	p = av[1];
 	p1 = ft_printf("mypf: %12c\n", c);
 	p2 = printf("real: %12c\n", c);
@@ -97,6 +97,9 @@ int		main(int ac, char **av)
 	comparprintf(p1, p2);
 	p1 = ft_printf("mypf: %+1.10d\n", i);
 	p2 = printf("real: %+1.10d\n", i);
+	comparprintf(p1, p2);
+	p1 = ft_printf("mypf: %10x", x);
+	p2 = printf("real: %10x", x);
 	comparprintf(p1, p2);
 	return (0);
 }
