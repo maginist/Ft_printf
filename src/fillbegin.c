@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 23:55:44 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:12:00 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 09:34:06 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ char	*fillbegin(char *num, t_data *data)
 	{
 		num[i++] = '0';
 		if (data->preci <= 0)
+		{
 			data->tdc -= 1;
+			data->size_aff++;
+		}
 	}
 	return (num);
 }

@@ -6,19 +6,61 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/10 11:41:10 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 10:11:32 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static char	*ajust_num(char *num, t_data *data, int i)
+static void		arrondi(char *num, char *tmp, int size, int check)
+{
+	static int	retenue;
+	int		i;
+	char	*tmp2;
+
+	if ((int)ft_strlen(num) < size)
+		return ;
+	if (!(retenue))
+		retenue = 0;
+	if (tmp[check] == '.')
+		check++;
+	i = check - 1;
+	if (num[0] == '+' || num[0] == ' ')
+		i++;
+	if (i > 0 && num[i] == '.')
+		i--;
+	if ((check == size && tmp[check] >= '5' && tmp[check] <= '9') 
+		|| (i >= 0 && ft_isdigit(num[i]) && retenue == 1))
+	{
+		if (num[i] < '9')
+			num[i] += 1;
+		else
+		{
+			num[i] = '0';
+			retenue = 1;
+			arrondi(num, tmp, size, i);
+		}
+	}
+	else if (retenue == 1)
+	{
+		if (!(tmp = (char*)malloc(sizeof(char) * (size + 2))))
+			return ;
+		ft_strcpy(tmp + 1, num);
+		tmp[0] = 1;
+		tmp2 = tmp;
+		tmp = num;
+		num = tmp2;
+		free(tmp);
+	}
+}
+
+static char		*ajust_num(char *num, t_data *data, int i)
 {
 	char	*tmp;
 
 	tmp = num;
-	if (!(num = (char*)malloc(sizeof(char)	* (data->size_aff + 1))))
-		return(0);
+	if (!(num = (char*)malloc(sizeof(char) * (data->size_aff + 1))))
+		return (0);
 	if (tmp[0] != '-')
 	{
 		if (data->plus == 1)
@@ -32,8 +74,9 @@ static char	*ajust_num(char *num, t_data *data, int i)
 			i = 1;
 		}
 	}
-	ft_strncpy(num + i, tmp, (size_t)(data->size_aff - i));
+	ft_strncpy(num + i, tmp, (size_t)(data->size_aff));
 	i = ft_strlen(num);
+	arrondi(num, tmp, data->size_aff, i);
 	while (i < data->size_aff)
 		num[i++] = '0';
 	free(tmp);
@@ -42,7 +85,7 @@ static char	*ajust_num(char *num, t_data *data, int i)
 
 void		gest_f(t_data *data, va_list ap)
 {
-	char    *num;
+	char	*num;
 	int		i;
 
 	i = 0;

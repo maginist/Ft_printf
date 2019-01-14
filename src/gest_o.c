@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:53:39 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 09:49:32 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	gest_o(t_data *data, va_list ap)
 	data->space = 0;
 	num = newstart_cleanbegin(num, data->size_aff, data);
 	num = fillbegin(num, data);
+	if (data->diez)
+		num[0] = '0';
 	gest_allnum(num, data);
 }

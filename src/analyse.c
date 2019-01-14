@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 15:26:07 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/11 16:50:21 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/12 11:51:01 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	analyse(char *s, int *i, int j, va_list ap)
 	}
 	stock_flgs(&data, s, &i[0], j);
 	redirection(&data, ap);
-	i[1] = data.size_aff;
-	return (i[0]);
+	if (data.tdc < 0)
+		data.tdc = 0;
+	i[1] = data.size_aff + data.tdc;
+	return (*i);
 }

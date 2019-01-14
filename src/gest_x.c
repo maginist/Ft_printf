@@ -6,11 +6,20 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:53:23 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 10:12:28 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+static void	add_diez(char *num, t_data *data)
+{
+	if (data->diez == 1)
+	{
+		num[0] = '0';
+		num[1] = 'x';
+	}
+}
 
 void	gest_x(t_data *data, va_list ap)
 {
@@ -30,10 +39,13 @@ void	gest_x(t_data *data, va_list ap)
 	data->preci -= data->size_aff;
 	if (data->preci > 0)
 		data->size_aff += data->preci;
+	if (data->diez == 1 && data->preci > 0)
+		data->size_aff += 2;
 	data->tdc = data->tdc - data->size_aff;
 	data->plus = 0;
 	data->space = 0;
 	num = newstart_cleanbegin(num, data->size_aff, data);
 	num = fillbegin(num, data);
+	add_diez(num, data);
 	gest_allnum(num, data);
 }
