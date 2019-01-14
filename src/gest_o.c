@@ -6,11 +6,17 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/14 09:49:32 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:38:19 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+static void	add_diez(char *num, t_data *data)
+{
+	if (data->diez == 1)
+		num[0] = '0';
+}
 
 void	gest_o(t_data *data, va_list ap)
 {
@@ -28,14 +34,16 @@ void	gest_o(t_data *data, va_list ap)
 		data->zero = 0;
 	data->size_aff = (int)ft_strlen(num);
 	data->preci -= data->size_aff;
-	if (data->preci > 0)
+	if (data->preci >= 0)
 		data->size_aff += data->preci;
-	data->tdc = data->tdc - data->size_aff;
+	if (data->preci <= 0 && data->zero == 0 && data->diez == 1)
+		data->size_aff += 1;
+//	printf("tdc %d et size %d\n", data->tdc, data->size_aff);
+	data->tdc -= data->size_aff;
 	data->plus = 0;
 	data->space = 0;
 	num = newstart_cleanbegin(num, data->size_aff, data);
 	num = fillbegin(num, data);
-	if (data->diez)
-		num[0] = '0';
+	add_diez(num, data);
 	gest_allnum(num, data);
 }

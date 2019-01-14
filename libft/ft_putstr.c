@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:13:16 by maginist          #+#    #+#             */
-/*   Updated: 2018/12/14 14:15:19 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:53:51 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void	ft_putstr(char const *s)
 {
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	write(1, &*s, i);
+	if (s != NULL)
+		write(1, s, ft_strlen(s));
 }

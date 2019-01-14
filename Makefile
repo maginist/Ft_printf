@@ -6,7 +6,7 @@
 #    By: maginist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 09:46:56 by maginist          #+#    #+#              #
-#    Updated: 2019/01/10 11:27:08 by maginist         ###   ########.fr        #
+#    Updated: 2019/01/14 16:11:27 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ FILES = add_pre_flgs.c\
 	  gest_x.c\
 	  gest_c.c\
 	  gest_di.c\
+	  gest_pc.c\
 	  gest_p.c\
 	  gest_s.c\
 	  gest_f.c\

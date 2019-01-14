@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:53:46 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/12 11:49:24 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:17:41 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,12 @@ int	ft_printf(const char *format, ...)
 			else
 				i[0]++;
 		}
-		ft_putchar(format[i[0]]);
-		ret++;
-		i[0]++;
+		else
+		{
+			ft_putchar(format[i[0]]);
+			ret++;
+			i[0]++;
+		}
 	}
 	va_end(ap);
 	free(i);

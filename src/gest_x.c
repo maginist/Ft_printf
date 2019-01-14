@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/14 10:12:28 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:57:47 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	gest_x(t_data *data, va_list ap)
 	data->preci -= data->size_aff;
 	if (data->preci > 0)
 		data->size_aff += data->preci;
-	if (data->diez == 1 && data->preci > 0)
+	if (data->diez == 1 && data->zero == 0)
 		data->size_aff += 2;
 	data->tdc = data->tdc - data->size_aff;
 	data->plus = 0;

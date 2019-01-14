@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/14 12:04:30 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:59:46 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ static char		*ajust_num(char *num, t_data *data, int i)
 {
 	char	*tmp;
 
-	tmp = num;
+	tmp = ft_strdup(num);
 	free(num);
-	if (!(num = (char*)malloc(sizeof(char) * (data->size_aff + 1))))
+	if (!(num = ft_strnew(data->size_aff)))
 		return (0);
 	if (tmp[0] != '-')
 	{
@@ -72,11 +72,12 @@ static char		*ajust_num(char *num, t_data *data, int i)
 			i = 1;
 		}
 	}
-	ft_strncpy(num + i, tmp, (size_t)(data->size_aff));
+	ft_strncpy(num + i, tmp, (size_t)(data->size_aff - 1));
 	i = ft_strlen(num);
 	arrondi(num, tmp, data, i);
 	while (i < data->size_aff)
 		num[i++] = '0';
+	free(tmp);
 	return (num);
 }
 
