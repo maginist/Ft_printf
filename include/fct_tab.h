@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 12:59:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/10 11:00:43 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:29:08 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_fct	g_fct_tab[] = {
 	{'X', &gest_majx},
 	{'b', &gest_b},
 	{'%', &gest_pc},
-	{'f', &gest_f},/*
+	{'f', &gest_f},
+	{'r', &gest_r},/*
 	{'e', &gest_e},
 	{'g', &gest_g}, \
-	{'r', &gest_r}, \
 	{'k', &gest_k}*/};
 
 #endif

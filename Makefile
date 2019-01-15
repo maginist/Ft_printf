@@ -6,7 +6,7 @@
 #    By: maginist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 09:46:56 by maginist          #+#    #+#              #
-#    Updated: 2019/01/14 16:11:27 by maginist         ###   ########.fr        #
+#    Updated: 2019/01/15 17:28:26 by floblanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,11 @@ FILES = add_pre_flgs.c\
 	  gest_x.c\
 	  gest_c.c\
 	  gest_di.c\
-	  gest_pc.c\
 	  gest_p.c\
 	  gest_s.c\
 	  gest_f.c\
+	  gest_pc.c\
+	  gest_r.c\
 	  init_struct.c\
 	  newstart_cleanbegin.c\
 	  printdc.c\
@@ -39,9 +40,12 @@ FILES = add_pre_flgs.c\
 	  bultoa.c\
 	  bustoa.c\
 	  butoa.c\
+	  buctoa.c\
 	  lltoa.c\
 	  ltoa.c\
 	  stoa.c\
+	  ctoa.c\
+	  uctoa.c\
 	  ulltoa.c\
 	  ultoa.c\
 	  ustoa.c\

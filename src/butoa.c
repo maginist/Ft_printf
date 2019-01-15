@@ -6,13 +6,13 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:37:56 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/07 16:11:51 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/15 18:16:54 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-unsigned int		ft_size(unsigned int n, unsigned int size)
+static unsigned int		ft_size(unsigned int n, unsigned int size)
 {
 	unsigned int	i;
 
@@ -27,7 +27,7 @@ unsigned int		ft_size(unsigned int n, unsigned int size)
 	return (i);
 }
 
-char				*butoa(unsigned int n, char *base)
+char					*butoa(unsigned int n, char *base)
 {
 	unsigned int	i;
 	char			*str;

@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/11 13:03:48 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:27:48 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ char			*bulltoa(unsigned long long n, char *base);
 char			*bultoa(unsigned long n, char *base);
 char			*butoa(unsigned int n, char *base);
 char			*bustoa(unsigned short n, char *base);
+char			*buctoa(unsigned char n, char *base);
 char			*ftoa(double n);
 char			*fltoa(long double n);
+char			*ctoa(char n);
+char			*uctoa(unsigned char n);
 void			putnbr_blong(unsigned long n, char *base);
 int				ft_printf(const char *format, ...);
 int				analyse(char *s, int *i, int j, va_list ap);
@@ -65,7 +68,6 @@ void			gest_e(t_data *data, va_list ap);
 void			gest_g(t_data *data, va_list ap);
 void			gest_b(t_data *data, va_list ap);
 void			gest_r(t_data *data, va_list ap);
-void			gest_k(t_data *data, va_list ap);
 void			gest_pc(t_data *data, va_list ap);
 
 typedef	struct	s_fct

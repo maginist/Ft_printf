@@ -6,16 +6,16 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/14 15:59:46 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/15 18:10:42 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static void		arrondi(char *num, char *tmp, t_data *data, int check)
+static void	arrondi(char *num, char *tmp, t_data *data, int check)
 {
 	static int	retenue;
-	int		i;
+	int			i;
 
 	if ((int)ft_strlen(num) < data->size_aff)
 		return ;
@@ -28,8 +28,8 @@ static void		arrondi(char *num, char *tmp, t_data *data, int check)
 		i++;
 	if (i > 0 && num[i] == '.')
 		i--;
-	if ((check == data->size_aff && tmp[check] >= '5' && tmp[check] <= '9') 
-		|| (i >= 0 && ft_isdigit(num[i]) && retenue == 1))
+	if ((check == data->size_aff && tmp[check] >= '5' && tmp[check] <= '9')
+			|| (i >= 0 && ft_isdigit(num[i]) && retenue == 1))
 	{
 		if (num[i] < '9')
 			num[i] += 1;
@@ -51,13 +51,14 @@ static void		arrondi(char *num, char *tmp, t_data *data, int check)
 	}
 }
 
-static char		*ajust_num(char *num, t_data *data, int i)
+static char	*ajust_num(char *num, t_data *data, int i)
 {
-	char	*tmp;
+	char		*tmp;
 
-	tmp = ft_strdup(num);
+	if (!(tmp = ft_strdup(num)))
+		return (0);
 	free(num);
-	if (!(num = ft_strnew(data->size_aff)))
+	if (!(num = ft_strnew(data->size_aff + 1)))
 		return (0);
 	if (tmp[0] != '-')
 	{
@@ -72,7 +73,7 @@ static char		*ajust_num(char *num, t_data *data, int i)
 			i = 1;
 		}
 	}
-	ft_strncpy(num + i, tmp, (size_t)(data->size_aff - 1));
+	ft_strncpy(num + i, tmp, (size_t)(data->size_aff));
 	i = ft_strlen(num);
 	arrondi(num, tmp, data, i);
 	while (i < data->size_aff)
@@ -81,10 +82,10 @@ static char		*ajust_num(char *num, t_data *data, int i)
 	return (num);
 }
 
-void		gest_f(t_data *data, va_list ap)
+void	gest_f(t_data *data, va_list ap)
 {
-	char	*num;
-	int		i;
+	char		*num;
+	int			i;
 
 	i = 0;
 	if (data->nb_flgs == 0 || (data->nb_flgs == 1 && data->flgs == 'l'))

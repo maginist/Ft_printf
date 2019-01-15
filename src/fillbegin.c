@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 23:55:44 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/14 15:39:06 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:59:12 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,9 @@ char	*fillbegin(char *num, t_data *data)
 	if (num[0] != '-')
 	{
 		if (data->plus == 1)
-		{
 			num[0] = '+';
-			data->tdc -= 1;
-		}
 		else if (data->space == 1)
-		{
 			num[0] = ' ';
-			data->tdc -= 1;
-		}
 		else
 			i--;
 	}

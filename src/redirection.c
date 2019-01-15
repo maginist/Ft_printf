@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:34:30 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/14 12:24:11 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:54:22 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	redirection(t_data *data, va_list ap)
 
 	i = 0;
 	(void)ap;
+	if (data->symbol == 'D' || data->symbol == 'O' || data->symbol == 'U')
+	{
+		data->nb_flgs = 1;
+		data->flgs = 'l';
+		data->symbol = data->symbol - 'A' + 'a';
+	}
 	while (g_fct_tab[i].symbol)
 	{
 		if (g_fct_tab[i].symbol == data->symbol)
