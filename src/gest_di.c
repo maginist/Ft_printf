@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/17 10:53:19 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:31:35 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ void	gest_di2(t_data *data, char *num)
 {
 	num = newstart_cleanbegin(num, data->size_aff, data);
 	num = fillbegin(num, data);
-	if (data->pt && data->preci <= 0 && num[0] == '0')
+	if ((data->s)[data->symbol_pos - 1] == '.'
+			|| ((data->s)[data->symbol_pos - 1] == '0'
+				&& (data->s)[data->symbol_pos - 2] == '.'))
 	{
-		data->tdc += data->size_aff;
-		data->size_aff = 0;
-		num[0] = 0;
+		if (ft_strsearch("-+ ", num[0]) && num[1] == '0')
+			num[1] = 0;
+		else if (num[0] == '0')
+			num[0] = 0;
+		data->size_aff--;
+		data->tdc++;
 	}
 	gest_allnum(num, data);
 }

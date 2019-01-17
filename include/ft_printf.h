@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/17 13:09:22 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:15:44 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_data
 	int			preci;
 	int			nb_flgs;
 	int			size_aff;
+	int			symbol_pos;
 	char		flgs;
 	char		symbol;
 	char		*s;

@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 15:26:07 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/15 15:47:12 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:48:12 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	analyse(char *s, int *i, int j, va_list ap)
 	i[0]++;
 	add_pre_flgs(&data, s, &i[0], j);
 	data.tdc = stock_digit(s, &i[0], j, ap);
+	if (data.tdc < 0)
+	{
+		data.tdc *= -1;
+		data.moins = 1;
+	}
 	if (s[i[0]] == '.')
 	{
 		i[0]++;

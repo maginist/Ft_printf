@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 18:40:26 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:36:17 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	gest_b2(t_data *data, char *num)
 {
-	if (data->pt && data->preci <= 0 && num[0] == '0')
+	if ((data->s)[data->symbol_pos - 1] == '.')
 	{
-		data->tdc += data->size_aff;
-		data->size_aff = 0;
-		num[0] = 0;
+		if (num[0] == '-' && num[1] == '0')
+			num[1] = 0;
+		else if (num[0] == '0')
+			num[0] = 0;
+		data->size_aff--;
+		data->tdc++;
 	}
 }
 

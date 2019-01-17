@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 16:47:17 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/09 11:44:54 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:16:37 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_struct(t_data *data, char *s, int pos_sym)
 	data->nb_flgs = 0;
 	data->flgs = 0;
 	data->size_aff = 0;
+	data->symbol_pos = pos_sym;
 	data->symbol = s[pos_sym];
 	data->s = s;
 }
