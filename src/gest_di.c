@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/17 15:31:35 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:12:32 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	gest_di2(t_data *data, char *num)
 		if (ft_strsearch("-+ ", num[0]) && num[1] == '0')
 			num[1] = 0;
 		else if (num[0] == '0')
+		{
 			num[0] = 0;
-		data->size_aff--;
-		data->tdc++;
+			data->size_aff--;
+		}
+			data->tdc++;
 	}
 	gest_allnum(num, data);
 }

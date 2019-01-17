@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:13:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/17 15:46:47 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 18:56:16 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,19 @@ int		main(int ac, char **av)
 	str[6] = 2;
 	x = 42;
 	p = av[1];
-	p1 = ft_printf("mypf: %#.X, %#.*X", -10, 0, 0);
+	p1 = ft_printf("@moulitest: {%4.s}", "42");
 	printf("\n");
-	p2 = printf("real: %#.X, %#.*X", -10, 0, 0);
+	p2 = printf("@moulitest: {%4.s}", "42");
+	printf("\n");
+	comparprintf(p1, p2);
+	p1 = ft_printf("@moulitest: {%05.s}", 0);
+	printf("\n");
+	p2 = printf("@moulitest: {%05.s}", 0);
+	printf("\n");
+	comparprintf(p1, p2);
+	p1 = ft_printf("@moulitest: {%.*s}", 0, "42");
+	printf("\n");
+	p2 = printf("@moulitest: {%.*s}", 0, "42");
 	printf("\n");
 	comparprintf(p1, p2);
 	p1 = ft_printf("mypf: %hd", (short)i);

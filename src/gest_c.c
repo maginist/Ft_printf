@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 15:26:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/16 11:13:07 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 18:06:58 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	gest_c(t_data *data, va_list ap)
 
 	c = va_arg(ap, int);
 	data->size_aff = 1;
-	data->tdc = data->tdc - 1;
-	if (data->moins == 0 && data->tdc > 0)
+	data->tdc--;
+	if (data->zero && data->moins == 0 && data->tdc > 0)
+		printpreci(data->tdc);
+	else if (data->moins == 0 && data->tdc > 0)
 		printdc(data->tdc);
-	ft_putchar(c);
+	write(1, &c, 1);
 	if (data->moins == 1 && data->tdc > 0)
 		printdc(data->tdc);
 }

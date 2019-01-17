@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/17 15:45:34 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:26:59 by floblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	add_diez(char *num, t_data *data)
 {
-	if (data->diez == 1 && num[data->size_aff - 1] != '0')
+	if (data->diez == 1 && !(num[data->size_aff - 1] == '0'
+				&& data->size_aff == 1))
 	{
 		num[0] = '0';
 		num[1] = 'X';
@@ -25,11 +26,15 @@ void		gest_majx2(t_data *data, char *num)
 {
 	num = fillbegin(num, data);
 	add_diez(num, data);
-	if (data->pt && data->preci <= 0 && num[0] == '0')
+	if ((data->s)[data->symbol_pos - 1] == '.'
+			|| ((data->s)[data->symbol_pos - 1] == '0'
+				&& (data->s)[data->symbol_pos - 2] == '.'))
 	{
-		data->tdc += data->size_aff;
-		data->size_aff = 0;
-		num[0] = 0;
+		if (num[0] == '0' && data->size_aff == 1)
+		{
+			num[0] = 0;
+			data->size_aff--;
+		}
 	}
 	gest_allnum(num, data);
 }
