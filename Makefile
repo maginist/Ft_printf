@@ -6,7 +6,7 @@
 #    By: maginist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 09:46:56 by maginist          #+#    #+#              #
-#    Updated: 2019/01/15 17:28:26 by floblanc         ###   ########.fr        #
+#    Updated: 2019/01/17 13:08:49 by maginist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ FILES = add_pre_flgs.c\
 	  utoa.c\
 	  ftoa.c\
 	  fltoa.c\
-	  putnbr_blong.c
+	  printpreci.c
 
 OBJ_NAME = $(FILES:.c=.o)
 LIB = libft/

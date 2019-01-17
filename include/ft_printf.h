@@ -6,7 +6,7 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:37:06 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/15 17:27:48 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 13:09:22 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void			printdc(int tdc);
 char			*newstart_cleanbegin(char *num, int size, t_data *data);
 char			*fillbegin(char *num, t_data *data);
 void			gest_allnum(char *num, t_data *data);
+void			printpreci(int size);
 
 #endif
