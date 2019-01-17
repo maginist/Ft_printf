@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:34:30 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 17:54:22 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 13:29:25 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	redirection(t_data *data, va_list ap)
 
 	i = 0;
 	(void)ap;
-	if (data->symbol == 'D' || data->symbol == 'O' || data->symbol == 'U')
+	if (ft_strsearch("DOUF", data->symbol))
 	{
 		data->nb_flgs = 1;
 		data->flgs = 'l';

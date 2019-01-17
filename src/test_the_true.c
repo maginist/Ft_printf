@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:13:20 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 18:13:07 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:10:40 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ int		main(int ac, char **av)
 	str[6] = 2;
 	x = 42;
 	p = av[1];
-	ft_printf("|%r|\n", str);
-	p1 = ft_printf("mypf: %#x", 42);
+	p1 = ft_printf("mypf: {%}");
 	printf("\n");
-	p2 = printf("real: %#x", 42);
+	p2 = printf("real: {%}");
 	printf("\n");
 	comparprintf(p1, p2);
 	p1 = ft_printf("mypf: %hd", (short)i);

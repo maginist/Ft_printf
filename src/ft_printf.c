@@ -6,11 +6,37 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:53:46 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 18:33:03 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:10:16 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int		falsepc(int i, const char *str, int *ret)
+{
+	int		ok;
+	int		moins;
+
+	moins = 0;
+	i++;
+	ok = 1;
+	while (ft_strsearch("-+0# lhjz*$L.", str[i]))
+		if (str[i++] == '-')
+			moins = 1;
+	if (ft_isdigit(str[i]))
+		ok = ft_atoi(str + i);
+	while (ft_isdigit(str[i]) || ft_strsearch("-+0# lhjz*$L.", str[i]))
+		if (str[i++] == '-')
+			moins = 1;
+	if (moins == 0 && ok > 1)
+		printdc(ok - 1);
+	write(1, &str[i], 1);
+	if (moins == 1 && ok > 1)
+		printdc(ok - 1);
+	if (str[i])
+		*ret += ok;
+	return (i + 1);
+}
 
 int		is_valide2(char *s, int i)
 {
@@ -42,9 +68,9 @@ int		is_valide(char *s, int i)
 	while (ft_strsearch("#+- 0", s[i]))
 		i++;
 	i = is_valide2(s, i);
-	if (ft_strsearch("cspdiouxXbfrDOU%", s[i]) && s[i - 1] != 'L')
+	if (ft_strsearch("cspdiouxXbfFrDOU%", s[i]) && s[i - 1] != 'L')
 		return (i);
-	else if (s[i] == 'f')
+	else if (s[i] == 'f' || s[i] == 'F')
 		if (s[i - 1] == 'L' || (s[i - 1] == 'l' && s[i - 2] != 'l'))
 			return (i);
 	return ((s[i] == '%') ? i : 0);
@@ -60,7 +86,7 @@ void	ft_printf2(const char *format, int *i, int j, va_list ap)
 			i[2] = i[2] + i[1];
 		}
 		else
-			i[0]++;
+			i[0] = falsepc(i[0], format, &(i[2]));
 	}
 	else
 	{
