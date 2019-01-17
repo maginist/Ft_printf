@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gest_s.c                                           :+:      :+:    :+:   */
+/*   gest_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 16:19:21 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 17:41:10 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:08:31 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+void	gest_r2(char *stock, int *i)
+{
+	write(1, "\\", 1);
+	if (ft_strlen(butoa(stock[*i], "0123456789abcdef")) < 2)
+		write(1, "0", 1);
+	ft_putstr(butoa(stock[(*i)++], "0123456789abcdef"));
+}
 
 void	gest_r(t_data *data, va_list ap)
 {
@@ -25,20 +33,15 @@ void	gest_r(t_data *data, va_list ap)
 	else
 		data->size_aff = ft_strlen(stock);
 	data->tdc = data->tdc - data->size_aff;
-	if (data->moins == 0)
+	if (data->moins == 0 && data->tdc > 0)
 		printdc(data->tdc);
 	while (i < data->size_aff)
 	{
 		if (stock[i] >= ' ' && stock[i] <= 126)
 			write(1, &stock[i++], 1);
 		else
-		{
-			write(1, "\\", 1);
-			if (ft_strlen(butoa(stock[i], "0123456789abcdef")) < 2)
-				write(1, "0", 1);
-			ft_putstr(butoa(stock[i++], "0123456789abcdef"));	
-		}
+			gest_r2(stock, &i);
 	}
-	if (data->moins == 1)
+	if (data->moins == 1 && data->tdc > 0)
 		printdc(data->tdc);
 }

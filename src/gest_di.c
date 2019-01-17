@@ -6,11 +6,24 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 16:45:39 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 10:53:19 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+void	gest_di2(t_data *data, char *num)
+{
+	num = newstart_cleanbegin(num, data->size_aff, data);
+	num = fillbegin(num, data);
+	if (data->pt && data->preci <= 0 && num[0] == '0')
+	{
+		data->tdc += data->size_aff;
+		data->size_aff = 0;
+		num[0] = 0;
+	}
+	gest_allnum(num, data);
+}
 
 void	gest_di(t_data *data, va_list ap)
 {
@@ -38,13 +51,5 @@ void	gest_di(t_data *data, va_list ap)
 	if ((data->plus == 1 || data->space == 1) && num[0] != '-')
 		data->size_aff += 1;
 	data->tdc -= data->size_aff;
-	num = newstart_cleanbegin(num, data->size_aff, data);
-	num = fillbegin(num, data);
-	if (data->pt && data->preci <= 0 && num[0] == '0')
-	{
-		data->tdc += data->size_aff;
-		data->size_aff = 0;
-		num[0] = 0;
-	}
-	gest_allnum(num, data);
+	gest_di2(data, num);
 }

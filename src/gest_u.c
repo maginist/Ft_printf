@@ -6,11 +6,22 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 21:02:03 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 17:46:39 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:54:56 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+void	gest_u2(t_data *data, char *num)
+{
+	if (data->pt && data->preci <= 0 && num[0] == '0')
+	{
+		data->tdc += data->size_aff;
+		data->size_aff = 0;
+		num[0] = 0;
+	}
+	gest_allnum(num, data);
+}
 
 void	gest_u(t_data *data, va_list ap)
 {
@@ -37,11 +48,5 @@ void	gest_u(t_data *data, va_list ap)
 	data->space = 0;
 	num = newstart_cleanbegin(num, data->size_aff, data);
 	num = fillbegin(num, data);
-	if (data->pt && data->preci <= 0 && num[0] == '0')
-	{
-		data->tdc += data->size_aff;
-		data->size_aff = 0;
-		num[0] = 0;
-	}
-	gest_allnum(num, data);
+	gest_u2(data, num);
 }

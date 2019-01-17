@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 18:37:50 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 11:42:26 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:50:55 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	printdc(int tdc)
 {
-	int	i;
+	int		i;
+	char	str[tdc];
 
+	str[tdc] = '\0';
 	i = 0;
-	while (tdc - i > 0)
+	while (i < tdc)
 	{
-		ft_putchar(' ');
+		str[i] = ' ';
 		i++;
 	}
+	write(1, str, (size_t)tdc);
 }

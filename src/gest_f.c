@@ -6,11 +6,29 @@
 /*   By: maginist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 10:58:17 by maginist          #+#    #+#             */
-/*   Updated: 2019/01/15 18:10:42 by maginist         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:49:36 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+static void	arrondi2(char *num, char *tmp, t_data *data)
+{
+	data->size_aff += 1;
+	data->tdc -= 1;
+	tmp = ft_strdup(num);
+	ft_strcpy(num + 1, tmp);
+	num[0] = '1';
+	free(tmp);
+}
+
+static void	arrondi1(char *num, int *i)
+{
+	if (num[0] == '+' || num[0] == ' ')
+		(*i)++;
+	if (i > 0 && num[*i] == '.')
+		(*i)--;
+}
 
 static void	arrondi(char *num, char *tmp, t_data *data, int check)
 {
@@ -24,10 +42,7 @@ static void	arrondi(char *num, char *tmp, t_data *data, int check)
 	if (tmp[check] == '.')
 		check++;
 	i = check - 1;
-	if (num[0] == '+' || num[0] == ' ')
-		i++;
-	if (i > 0 && num[i] == '.')
-		i--;
+	arrondi1(num, &i);
 	if ((check == data->size_aff && tmp[check] >= '5' && tmp[check] <= '9')
 			|| (i >= 0 && ft_isdigit(num[i]) && retenue == 1))
 	{
@@ -41,22 +56,11 @@ static void	arrondi(char *num, char *tmp, t_data *data, int check)
 		}
 	}
 	else if (retenue == 1)
-	{
-		data->size_aff += 1;
-		data->tdc -= 1;
-		tmp = ft_strdup(num);
-		ft_strcpy(num + 1, tmp);
-		num[0] = '1';
-		free(tmp);
-	}
+		arrondi2(num, tmp, data);
 }
 
-static char	*ajust_num(char *num, t_data *data, int i)
+static char	*ajust_num(char *num, t_data *data, int i, char *tmp)
 {
-	char		*tmp;
-
-	if (!(tmp = ft_strdup(num)))
-		return (0);
 	free(num);
 	if (!(num = ft_strnew(data->size_aff + 1)))
 		return (0);
@@ -82,10 +86,11 @@ static char	*ajust_num(char *num, t_data *data, int i)
 	return (num);
 }
 
-void	gest_f(t_data *data, va_list ap)
+void		gest_f(t_data *data, va_list ap)
 {
 	char		*num;
 	int			i;
+	char		*tmp;
 
 	i = 0;
 	if (data->nb_flgs == 0 || (data->nb_flgs == 1 && data->flgs == 'l'))
@@ -104,6 +109,8 @@ void	gest_f(t_data *data, va_list ap)
 	if ((data->plus == 1 || data->space == 1) && num[0] != '-')
 		data->size_aff += 1;
 	data->tdc -= data->size_aff;
-	num = ajust_num(num, data, 0);
+	if (!(tmp = ft_strdup(num)))
+		return ;
+	num = ajust_num(num, data, 0, tmp);
 	gest_allnum(num, data);
 }

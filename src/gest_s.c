@@ -6,7 +6,7 @@
 /*   By: floblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 16:19:21 by floblanc          #+#    #+#             */
-/*   Updated: 2019/01/15 16:17:46 by floblanc         ###   ########.fr       */
+/*   Updated: 2019/01/17 11:50:12 by maginist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ void	gest_s(t_data *data, va_list ap)
 	else
 		data->size_aff = ft_strlen(stock);
 	data->tdc = data->tdc - data->size_aff;
-	if (data->moins == 0)
+	if (data->moins == 0 && data->tdc > 0)
 		printdc(data->tdc);
-	while (i < data->size_aff)
-		ft_putchar(stock[i++]);
-	if (data->moins == 1)
+	write(1, stock, (size_t)(data->size_aff));
+	if (data->moins == 1 && data->tdc > 0)
 		printdc(data->tdc);
 }
